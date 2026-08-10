@@ -17,10 +17,14 @@ function MoleculeViewer() {
   }, []);
 
   return (
-    <div
-      ref={viewerRef}
-      style={{ width: '500px', height: '400px', position: 'relative' }}
-    ></div>
+    <div className="viewer-section">
+      <h2>Vista previa 3D</h2>
+      <div
+        ref={viewerRef}
+        className="viewer-container"
+        style={{ width: '500px', height: '400px', position: 'relative', margin: '0 auto' }}
+      />
+    </div>
   );
 }
 
