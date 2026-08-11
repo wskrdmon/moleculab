@@ -1,15 +1,12 @@
-function Navbar() {
-  const scrollTo = (id) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
-  };
+import { Link } from 'react-router-dom';
 
+function Navbar() {
   return (
     <nav className="navbar">
-      <div className="navbar-logo">MoleculeLab 3D</div>
+      <Link to="/" className="navbar-logo">MoleculeLab 3D</Link>
       <div className="navbar-links">
-        <button onClick={() => scrollTo('inicio')}>Inicio</button>
-        <button onClick={() => scrollTo('categorias')}>Categorías</button>
-        <button onClick={() => scrollTo('catalogo')}>Moléculas</button>
+        <Link to="/">Inicio</Link>
+        <Link to="/moleculas">Moléculas</Link>
       </div>
     </nav>
   );

@@ -1,16 +1,21 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import HomePage from './components/HomePage';
-import Catalog from './components/Catalog';
-import MoleculeViewer from './components/MoleculeViewer';
+import Footer from './components/Footer';
+import HomePage from './pages/HomePage';
+import MoleculesPage from './pages/MoleculesPage';
+import MoleculeDetailPage from './pages/MoleculeDetailPage';
 
 function App() {
   return (
-    <div>
+    <BrowserRouter>
       <Navbar />
-      <HomePage />
-      <Catalog />
-      <MoleculeViewer />
-    </div>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/moleculas" element={<MoleculesPage />} />
+        <Route path="/moleculas/:id" element={<MoleculeDetailPage />} />
+      </Routes>
+      <Footer />
+    </BrowserRouter>
   );
 }
 

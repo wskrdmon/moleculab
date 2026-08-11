@@ -38,8 +38,10 @@ body {
   gap: 20px;
   text-align: left;
 }
-
 .molecule-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
   background-color: #334155;
   border-radius: 12px;
   overflow: hidden;
@@ -239,6 +241,8 @@ body {
 .navbar-logo {
   font-weight: bold;
   font-size: 1.2rem;
+  color: white;
+  text-decoration: none;
 }
 
 .navbar-links {
@@ -246,14 +250,139 @@ body {
   gap: 24px;
 }
 
-.navbar-links button {
-  background: none;
-  border: none;
+.navbar-links a {
   color: white;
-  cursor: pointer;
+  text-decoration: none;
   font-size: 0.95rem;
 }
 
-.navbar-links button:hover {
+.navbar-links a:hover {
   color: #06B6D4;
+}
+
+.molecule-info {
+  margin-bottom: 20px;
+}
+
+.molecule-info h1 {
+  font-size: 2rem;
+  margin-bottom: 8px;
+}
+
+.molecule-info .molecule-formula {
+  color: #94a3b8;
+  font-size: 1.1rem;
+}
+
+.hero-badge {
+  display: inline-block;
+  background-color: #334155;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  margin-bottom: 20px;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-top: 24px;
+  flex-wrap: wrap;
+}
+
+.btn-primary, .btn-secondary {
+  padding: 12px 24px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.btn-primary {
+  background-color: #2563EB;
+  color: white;
+}
+
+.btn-secondary {
+  background-color: #334155;
+  color: white;
+  border: 1px solid #475569;
+}
+
+.category-label {
+  display: block;
+  font-size: 0.75rem;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+}
+
+.category-link {
+  display: inline-block;
+  margin-top: 16px;
+  color: #06B6D4;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.category-link:hover {
+  text-decoration: underline;
+}
+
+.footer {
+  background-color: #0f172a;
+  padding: 60px 40px 20px;
+}
+
+.footer-content {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 220px));
+  gap: 32px;
+}
+
+.footer-column h4 {
+  margin-bottom: 16px;
+}
+
+.footer-column a,
+.footer-column span,
+.footer-column p {
+  display: block;
+  color: #94a3b8;
+  text-decoration: none;
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+}
+
+.footer-column a:hover {
+  color: white;
+}
+
+.footer-icons {
+  display: flex;
+  gap: 12px;
+}
+
+.footer-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background-color: #1e293b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.footer-bottom {
+  max-width: 1100px;
+  margin: 20px auto 0;
+  text-align: center;
+  border-top: 1px solid #1e293b;
+  padding-top: 20px;
+  color: #64748b;
+  font-size: 0.85rem;
 }

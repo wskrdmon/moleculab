@@ -1,5 +1,5 @@
-import Hero from './Hero';
-import CategoryCard from './CategoryCard';
+import Hero from '../components/Hero';
+import CategoryCard from '../components/CategoryCard';
 
 const categories = [
   {
