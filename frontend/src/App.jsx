@@ -6,6 +6,7 @@ import CategoriesPage from './pages/CategoriesPage';
 import MoleculesPage from './pages/MoleculesPage';
 import MoleculeDetailPage from './pages/MoleculeDetailPage';
 import AboutPage from './pages/AboutPage';
+import AdminPage from './pages/AdminPage';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/moleculas" element={<MoleculesPage />} />
         <Route path="/moleculas/:id" element={<MoleculeDetailPage />} />
         <Route path="/acerca-de" element={<AboutPage />} />
+        <Route path="/admin" element={<AdminPage />} />
       </Routes>
       <Footer />
     </BrowserRouter>
