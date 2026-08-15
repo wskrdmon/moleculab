@@ -11,10 +11,10 @@ const getMoleculas = async (req, res) => {
 
 const crearMolecula = async (req, res) => {
   try {
-    const { nombre, formula } = req.body;
+    const { nombre, formula, pdb_code } = req.body;
     const result = await pool.query(
-      'INSERT INTO moleculas (nombre, formula) VALUES ($1, $2) RETURNING *',
-      [nombre, formula]
+      'INSERT INTO moleculas (nombre, formula, pdb_code) VALUES ($1, $2, $3) RETURNING *',
+      [nombre, formula, pdb_code]
     );
     res.status(201).json(result.rows[0]);
   } catch (err) {
@@ -25,10 +25,10 @@ const crearMolecula = async (req, res) => {
 const actualizarMolecula = async (req, res) => {
   try {
     const { id } = req.params;
-    const { nombre, formula } = req.body;
+    const { nombre, formula, pdb_code } = req.body;
     const result = await pool.query(
-      'UPDATE moleculas SET nombre = $1, formula = $2 WHERE id = $3 RETURNING *',
-      [nombre, formula, id]
+      'UPDATE moleculas SET nombre = $1, formula = $2, pdb_code = $3 WHERE id = $4 RETURNING *',
+      [nombre, formula, pdb_code, id]
     );
     if (result.rows.length === 0) {
       return res.status(404).json({ error: 'Molécula no encontrada' });
