@@ -1,5 +1,9 @@
 import Hero from '../components/Hero';
 import CategoryCard from '../components/CategoryCard';
+import imgVida from '../assets/categories/vida.jpg';
+import imgSensacion from '../assets/categories/sensacion.jpg';
+import imgCuraEnferma from '../assets/categories/cura-enferma.jpg';
+import imgNano from '../assets/categories/nano.jpg';
 
 const categories = [
   {
@@ -8,6 +12,7 @@ const categories = [
     emoji: '🧬',
     molecules: ['ADN', 'ARN', 'ATP'],
     color: '#2563EB',
+    image: imgVida,
   },
   {
     title: 'Moléculas de la sensación',
@@ -15,6 +20,7 @@ const categories = [
     emoji: '❤️',
     molecules: ['Dopamina', 'Serotonina', 'Capsaicina'],
     color: '#06B6D4',
+    image: imgSensacion,
   },
   {
     title: 'Moléculas que curan y enferman',
@@ -22,6 +28,7 @@ const categories = [
     emoji: '💊',
     molecules: ['Aspirina', 'Penicilina', 'SARS-CoV-2'],
     color: '#8B5CF6',
+    image: imgCuraEnferma,
   },
   {
     title: 'Nanomoléculas y mundo invisible',
@@ -29,6 +36,7 @@ const categories = [
     emoji: '⚛️',
     molecules: ['Ferritina', 'Nanotubos', 'Liposomas'],
     color: '#10B981',
+    image: imgNano,
   },
 ];
 

@@ -91,6 +91,37 @@ body {
   position: relative;
 }
 
+.viewer-style-selector {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 16px 0;
+  flex-wrap: wrap;
+}
+
+.viewer-style-btn {
+  background-color: #334155;
+  color: #cbd5e1;
+  border: 1px solid #475569;
+  border-radius: 8px;
+  padding: 8px 18px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.viewer-style-btn:hover {
+  background-color: #475569;
+  color: #ffffff;
+}
+
+.viewer-style-btn.active {
+  background-color: #2563eb;
+  border-color: #2563eb;
+  color: #ffffff;
+}
+
+
 .empty-state {
   padding: 60px 20px;
   text-align: center;
@@ -179,6 +210,14 @@ body {
 .category-image {
   height: 180px;
   position: relative;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: transform 0.4s ease;
+}
+
+.category-card:hover .category-image {
+  transform: scale(1.08);
 }
 
 .category-icon-float {

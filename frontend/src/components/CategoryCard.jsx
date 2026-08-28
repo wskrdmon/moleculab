@@ -1,9 +1,13 @@
-function CategoryCard({ title, description, emoji, molecules, color }) {
+function CategoryCard({ title, description, emoji, molecules, color, image }) {
   return (
     <div className="category-card">
       <div
         className="category-image"
-        style={{ background: `linear-gradient(135deg, ${color}, #0f172a)` }}
+        style={
+          image
+            ? { backgroundImage: `url(${image})` }
+            : { background: `linear-gradient(135deg, ${color}, #0f172a)` }
+        }
       >
         <div className="category-icon-float" style={{ backgroundColor: color }}>
           {emoji}
