@@ -34,3 +34,8 @@ export const eliminarMolecula = async (id) => {
   });
   return res.json();
 };
+
+export const getCategorias = async () => {
+  const res = await fetch(`${API_URL}/categorias`);
+  return res.json();
+};

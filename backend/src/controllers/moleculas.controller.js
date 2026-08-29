@@ -2,7 +2,11 @@ const pool = require('../config/db');
 
 const getMoleculas = async (req, res) => {
   try {
-    const result = await pool.query('SELECT * FROM moleculas');
+    const result = await pool.query(`
+      SELECT m.*, c.nombre AS categoria_nombre, c.color AS categoria_color, c.imagen AS categoria_imagen
+      FROM moleculas m
+      LEFT JOIN categorias c ON m.categoria_id = c.id
+    `);
     res.json(result.rows);
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -11,10 +15,10 @@ const getMoleculas = async (req, res) => {
 
 const crearMolecula = async (req, res) => {
   try {
-    const { nombre, formula, pdb_code } = req.body;
+    const { nombre, formula, pdb_code, categoria_id } = req.body;
     const result = await pool.query(
-      'INSERT INTO moleculas (nombre, formula, pdb_code) VALUES ($1, $2, $3) RETURNING *',
-      [nombre, formula, pdb_code]
+      'INSERT INTO moleculas (nombre, formula, pdb_code, categoria_id) VALUES ($1, $2, $3, $4) RETURNING *',
+      [nombre, formula, pdb_code, categoria_id || null]
     );
     res.status(201).json(result.rows[0]);
   } catch (err) {
@@ -25,10 +29,10 @@ const crearMolecula = async (req, res) => {
 const actualizarMolecula = async (req, res) => {
   try {
     const { id } = req.params;
-    const { nombre, formula, pdb_code } = req.body;
+    const { nombre, formula, pdb_code, categoria_id } = req.body;
     const result = await pool.query(
-      'UPDATE moleculas SET nombre = $1, formula = $2, pdb_code = $3 WHERE id = $4 RETURNING *',
-      [nombre, formula, pdb_code, id]
+      'UPDATE moleculas SET nombre = $1, formula = $2, pdb_code = $3, categoria_id = $4 WHERE id = $5 RETURNING *',
+      [nombre, formula, pdb_code, categoria_id || null, id]
     );
     if (result.rows.length === 0) {
       return res.status(404).json({ error: 'Molécula no encontrada' });

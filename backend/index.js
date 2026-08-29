@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const moleculasRoutes = require('./src/routes/moleculas.routes');
-
+const categoriasRoutes = require('./src/routes/categorias.routes');
 const app = express();   //crea el servidor de express
 const PORT = 3001;
 
@@ -13,7 +13,7 @@ app.get('/api/ping', (req, res) => {  //un ednpoint de prueba para verificar que
 });
 
 app.use('/api/moleculas', moleculasRoutes);
-
+app.use('/api/categorias', categoriasRoutes);
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en http://localhost:${PORT}`); //arranca el servidor y muestra un mensaje en la consola indicando que está corriendo y en qué puerto
 });
