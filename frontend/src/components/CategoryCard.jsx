@@ -1,6 +1,8 @@
-function CategoryCard({ title, description, emoji, molecules, color, image }) {
+import { Link } from 'react-router-dom';
+
+function CategoryCard({ id, title, description, emoji, molecules, color, image }) {
   return (
-    <div className="category-card">
+    <Link to={`/moleculas?categoria=${id}`} className="category-card">
       <div
         className="category-image"
         style={
@@ -22,9 +24,8 @@ function CategoryCard({ title, description, emoji, molecules, color, image }) {
             <span key={m} className="category-tag">{m}</span>
           ))}
         </div>
-        <a href="#catalogo" className="category-link">Ver moléculas →</a>
       </div>
-    </div>
+    </Link>
   );
 }
 

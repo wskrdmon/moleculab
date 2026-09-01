@@ -2,15 +2,15 @@ import { useState, useEffect } from 'react';
 import { getMoleculas } from '../services/api';
 import MoleculeCard from './MoleculeCard';
 
-function Catalog() {
+function Catalog({ categoriaId }) {
   const [moleculas, setMoleculas] = useState([]);
   const [busqueda, setBusqueda] = useState('');
 
   useEffect(() => {
-    getMoleculas()
+    getMoleculas(categoriaId)
       .then((data) => setMoleculas(data))
       .catch((err) => console.error(err));
-  }, []);
+  }, [categoriaId]);
 
   const moleculasFiltradas = moleculas.filter((m) =>
     m.nombre.toLowerCase().includes(busqueda.toLowerCase())

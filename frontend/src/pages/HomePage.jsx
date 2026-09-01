@@ -7,6 +7,7 @@ import imgNano from '../assets/categories/nano.jpg';
 
 const categories = [
   {
+    id: 1,
     title: 'Moléculas de la vida',
     description: 'Biomoléculas esenciales para los procesos vitales',
     emoji: '🧬',
@@ -15,6 +16,7 @@ const categories = [
     image: imgVida,
   },
   {
+    id: 2,
     title: 'Moléculas de la sensación',
     description: 'Neurotransmisores y moléculas que afectan nuestras emociones',
     emoji: '❤️',
@@ -23,6 +25,7 @@ const categories = [
     image: imgSensacion,
   },
   {
+    id: 3,
     title: 'Moléculas que curan y enferman',
     description: 'Fármacos, medicamentos y agentes patógenos',
     emoji: '💊',
@@ -31,6 +34,7 @@ const categories = [
     image: imgCuraEnferma,
   },
   {
+    id: 4,
     title: 'Nanomoléculas y mundo invisible',
     description: 'Estructuras nanométricas y moléculas complejas',
     emoji: '⚛️',
@@ -53,7 +57,7 @@ function HomePage() {
 
         <div className="category-grid">
           {categories.map((category) => (
-            <CategoryCard key={category.title} {...category} />
+            <CategoryCard key={category.id} {...category} />
           ))}
         </div>
       </section>

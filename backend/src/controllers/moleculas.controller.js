@@ -2,11 +2,21 @@ const pool = require('../config/db');
 
 const getMoleculas = async (req, res) => {
   try {
-    const result = await pool.query(`
+    const { categoria_id } = req.query;
+
+    let query = `
       SELECT m.*, c.nombre AS categoria_nombre, c.color AS categoria_color, c.imagen AS categoria_imagen
       FROM moleculas m
       LEFT JOIN categorias c ON m.categoria_id = c.id
-    `);
+    `;
+    const params = [];
+
+    if (categoria_id) {
+      query += ' WHERE m.categoria_id = $1';
+      params.push(categoria_id);
+    }
+
+    const result = await pool.query(query, params);
     res.json(result.rows);
   } catch (err) {
     res.status(500).json({ error: err.message });

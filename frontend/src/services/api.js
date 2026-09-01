@@ -1,7 +1,8 @@
 const API_URL = 'http://localhost:3001/api';
 
-export const getMoleculas = async () => {
-  const res = await fetch(`${API_URL}/moleculas`);
+export const getMoleculas = async (categoriaId) => {
+  const url = categoriaId ? `${API_URL}/moleculas?categoria_id=${categoriaId}` : `${API_URL}/moleculas`;
+  const res = await fetch(url);
   return res.json();
 };
 

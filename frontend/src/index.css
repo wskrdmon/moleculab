@@ -206,6 +206,23 @@ body {
   border-radius: 12px;
   overflow: hidden;
 }
+ 
+.category-card {
+  text-decoration: none;
+  color: inherit;
+}
+
+.category-card:visited,
+.category-card:hover,
+.category-card:active {
+  text-decoration: none;
+  color: inherit;
+}
+
+.category-card * {
+  text-decoration: none;
+}
+
 
 .category-image {
   height: 180px;
