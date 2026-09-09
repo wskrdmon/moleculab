@@ -7,6 +7,8 @@ import MoleculesPage from './pages/MoleculesPage';
 import MoleculeDetailPage from './pages/MoleculeDetailPage';
 import AboutPage from './pages/AboutPage';
 import AdminPage from './pages/AdminPage';
+import LoginPage from './pages/LoginPage';
+import RutaProtegida from './components/RutaProtegida';
 
 function App() {
   return (
@@ -18,7 +20,15 @@ function App() {
         <Route path="/moleculas" element={<MoleculesPage />} />
         <Route path="/moleculas/:id" element={<MoleculeDetailPage />} />
         <Route path="/acerca-de" element={<AboutPage />} />
-        <Route path="/admin" element={<AdminPage />} />
+        <Route path="/admin/login" element={<LoginPage />} />
+        <Route
+          path="/admin"
+          element={
+            <RutaProtegida>
+              <AdminPage />
+            </RutaProtegida>
+          }
+        />
       </Routes>
       <Footer />
     </BrowserRouter>

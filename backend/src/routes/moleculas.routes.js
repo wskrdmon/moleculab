@@ -7,11 +7,12 @@ const {
   actualizarMolecula,
   eliminarMolecula,
 } = require('../controllers/moleculas.controller');
+const verificarToken = require('../middlewares/verificarToken');
 
 router.get('/', getMoleculas);
 router.get('/:id', getMoleculaPorId);
-router.post('/', crearMolecula);
-router.put('/:id', actualizarMolecula);
-router.delete('/:id', eliminarMolecula);
+router.post('/', verificarToken, crearMolecula);
+router.put('/:id', verificarToken, actualizarMolecula);
+router.delete('/:id', verificarToken, eliminarMolecula);
 
 module.exports = router;
