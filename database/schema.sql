@@ -19,6 +19,22 @@ CREATE TABLE IF NOT EXISTS moleculas (
   categoria_id INTEGER REFERENCES categorias(id)
 );
 
+-- Extensión necesaria para generar UUIDs (usada en la tabla usuarios)
+CREATE EXTENSION IF NOT EXISTS pgcrypto;
+
+-- Tabla de usuarios (administradores del panel, autenticación con JWT)
+CREATE TABLE IF NOT EXISTS usuarios (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  nombre_completo TEXT NOT NULL,
+  correo VARCHAR(255) UNIQUE NOT NULL,
+  password_hash VARCHAR(60) NOT NULL,
+  rol VARCHAR(20) NOT NULL DEFAULT 'administrador' CHECK (rol IN ('administrador')),
+  activo BOOLEAN DEFAULT true,
+  ultimo_acceso TIMESTAMPTZ,
+  creado_en TIMESTAMPTZ DEFAULT now(),
+  actualizado_en TIMESTAMPTZ DEFAULT now()
+);
+
 -- Datos de categorías
 INSERT INTO categorias (nombre, descripcion, color, imagen) VALUES
 ('Moléculas de la vida', 'Biomoléculas esenciales para los procesos vitales', '#2563EB', 'vida.jpg'),
@@ -34,3 +50,7 @@ INSERT INTO moleculas (nombre, formula, pdb_code, categoria_id) VALUES
 ('SARS-CoV-2', 'Glicoproteína (trímero)', '6VXX', 3),
 ('Ferritina', 'Proteína (24 subunidades)', '1FHA', 4)
 ON CONFLICT DO NOTHING;
+
+-- NOTA: no se incluye un INSERT de ejemplo para "usuarios", ya que las cuentas
+-- de administrador se crean manualmente vía POST /api/auth/registro (Thunder Client)
+-- y nunca desde un formulario público. Ver auth.controller.js.
