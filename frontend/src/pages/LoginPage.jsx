@@ -22,27 +22,41 @@ function LoginPage() {
   };
 
   return (
-    <div className="admin-section">
-      <h2>Ingresar a MoleculeLab</h2>
+    <div className="login-wrapper">
+      <div className="login-card">
+        <h2>Ingresar a MoleculeLab</h2>
+        <p className="login-subtitle">Acceso exclusivo para administradores</p>
 
-      <form className="admin-form" onSubmit={handleSubmit} style={{ flexDirection: 'column', maxWidth: '340px' }}>
-        <input
-          type="email"
-          placeholder="Correo"
-          value={correo}
-          onChange={(e) => setCorreo(e.target.value)}
-          required
-        />
-        <input
-          type="password"
-          placeholder="Contraseña"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-        {error && <p style={{ color: '#f87171' }}>{error}</p>}
-        <button type="submit">Iniciar sesión</button>
-      </form>
+        <form onSubmit={handleSubmit}>
+          <div className="login-field">
+            <label htmlFor="correo">Correo</label>
+            <input
+              id="correo"
+              type="email"
+              placeholder="tu@correo.com"
+              value={correo}
+              onChange={(e) => setCorreo(e.target.value)}
+              required
+            />
+          </div>
+
+          <div className="login-field">
+            <label htmlFor="password">Contraseña</label>
+            <input
+              id="password"
+              type="password"
+              placeholder="••••••••"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
+
+          {error && <p className="login-error">{error}</p>}
+
+          <button type="submit" className="login-button">Iniciar sesión</button>
+        </form>
+      </div>
     </div>
   );
 }

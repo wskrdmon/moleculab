@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { getMoleculas } from '../services/api';
 import MoleculeCard from './MoleculeCard';
 
@@ -16,10 +17,20 @@ function Catalog({ categoriaId }) {
     m.nombre.toLowerCase().includes(busqueda.toLowerCase())
   );
 
+  const categoriaActiva = categoriaId && moleculas.length > 0
+    ? moleculas[0].categoria_nombre
+    : null;
+
   return (
     <div id="catalogo" className="catalog">
-      <h1>Explora Biomoléculas</h1>
+      <h1>{categoriaActiva ? categoriaActiva : 'Explora Biomoléculas'}</h1>
       <p>Descubre el mundo molecular a través de visualizaciones 3D interactivas</p>
+
+      {categoriaId && (
+        <p className="active-filter">
+          Mostrando solo esta categoría — <Link to="/moleculas">ver todas las moléculas</Link>
+        </p>
+      )}
 
       <input
         type="text"

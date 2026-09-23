@@ -2,7 +2,7 @@
 -- Ejecutar en pgAdmin conectado a la base de datos "moleculab"
 
 -- Tabla de categorías
-CREATE TABLE IF NOT EXISTS categorias (
+CREATE TABLE IF NOT EXISTS categorias ( 
   id SERIAL PRIMARY KEY,
   nombre VARCHAR(100) NOT NULL,
   descripcion TEXT,

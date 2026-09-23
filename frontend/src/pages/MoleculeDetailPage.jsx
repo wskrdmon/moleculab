@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { getMoleculaPorId } from '../services/api';
 import MoleculeViewer from '../components/MoleculeViewer';
 
@@ -13,7 +13,14 @@ function MoleculeDetailPage() {
       .catch((err) => console.error(err));
   }, [id]);
 
-  return <MoleculeViewer molecula={molecula} />;
+  return (
+  <div>
+    <div className="back-link">
+      <Link to="/moleculas" className="btn-secondary">← Volver a Moléculas</Link>
+    </div>
+    <MoleculeViewer molecula={molecula} />
+  </div>
+);
 }
 
 export default MoleculeDetailPage;

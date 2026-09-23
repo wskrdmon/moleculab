@@ -21,7 +21,7 @@ const registro = async (req, res) => {
   }
 };
 
-const login = async (req, res) => {
+const login = async (req, res) => {    
   try {
     const { correo, password } = req.body;
 
@@ -29,11 +29,11 @@ const login = async (req, res) => {
     const result = await pool.query(query, [correo]);
 
     if (result.rows.length === 0) {
-      return res.status(401).json({ error: 'Credenciales inválidas' });
+      return res.status(401).json({ error: 'Credenciales inválidas' });  //busca el usuario por correo, si no lo encuentra devuelve error 401
     }
 
     const usuario = result.rows[0];
-    const passwordValida = await bcrypt.compare(password, usuario.password_hash);
+    const passwordValida = await bcrypt.compare(password, usuario.password_hash); //toma la contraseña ingresada y la compara con la almacenada en la base de datos usando bcrypt
 
     if (!passwordValida) {
       return res.status(401).json({ error: 'Credenciales inválidas' });
@@ -43,8 +43,8 @@ const login = async (req, res) => {
       { id: usuario.id, rol: usuario.rol },
       process.env.JWT_SECRET,
       { expiresIn: '2h' }
-    );
-
+    );   // se verifica la contraseña y si es correcta, se genera un token JWT que contiene el id y rol del usuario, con una expiración de 2 horas
+ 
     await pool.query('UPDATE usuarios SET ultimo_acceso = now() WHERE id = $1', [usuario.id]);
 
     res.json({ token });

@@ -1,6 +1,6 @@
 const pool = require('../config/db');
 
-const getMoleculas = async (req, res) => {
+const getMoleculas = async (req, res) => { // Obtener todas las moléculas, con opción de filtrar por categoría
   try {
     const { categoria_id } = req.query;
 
@@ -8,7 +8,7 @@ const getMoleculas = async (req, res) => {
       SELECT m.*, c.nombre AS categoria_nombre, c.color AS categoria_color, c.imagen AS categoria_imagen
       FROM moleculas m
       LEFT JOIN categorias c ON m.categoria_id = c.id
-    `;
+    `; //este es el left join que permite traer la información de la categoría asociada a cada molécula, si es que tiene una categoría asignada.
     const params = [];
 
     if (categoria_id) {
@@ -50,7 +50,7 @@ const actualizarMolecula = async (req, res) => {
     res.json(result.rows[0]);
   } catch (err) {
     res.status(500).json({ error: err.message });
-  }
+  } //todo esto es para actualizar una molécula, si no se encuentra la molécula con el id proporcionado, se devuelve un error 404.
 };
 
 const eliminarMolecula = async (req, res) => {
@@ -66,7 +66,7 @@ const eliminarMolecula = async (req, res) => {
     res.json({ mensaje: 'Molécula eliminada', molecula: result.rows[0] });
   } catch (err) {
     res.status(500).json({ error: err.message });
-  }
+  } //esto es para eliminar una molécula, si no se encuentra la molécula con el id proporcionado, se devuelve un error 404.
 };
 
 const getMoleculaPorId = async (req, res) => {
@@ -80,6 +80,6 @@ const getMoleculaPorId = async (req, res) => {
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
-};
+}; //esto es para obtener una molécula por su id, si no se encuentra la molécula con el id proporcionado, se devuelve un error 404.
 
 module.exports = { getMoleculas, getMoleculaPorId, crearMolecula, actualizarMolecula, eliminarMolecula };
